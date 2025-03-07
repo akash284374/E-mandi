@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - E-Mandi</title>
+     <link rel="stylesheet" href="/static/css/cart.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    
+    <script>
+        function removeItem(row) {
+            var table = document.getElementById("cartTable");
+            table.deleteRow(row.parentNode.parentNode.rowIndex);
+            updateTotal();
+        }
+
+        function saveForLater(row) {
+            alert("Item saved for later!");
+        }
+
+        function updateCart() {
+            alert("Cart updated!");
+        }
+
+        function checkout() {
+            alert("Proceeding to checkout!");
+        }
+
+        function updateTotal() {
+            var table = document.getElementById("cartTable");
+            var rows = table.rows;
+            var total = 0;
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].cells;
+                var price = parseFloat(cells[3].innerText.replace('$', ''));
+                var quantity = parseInt(cells[2].innerText);
+                total += price * quantity;
+            }
+            document.getElementById("totalAmount").innerText = "Total: $" + total.toFixed(2);
+        }
+        document.getElementById('nname').addEventListener('change', function() {
+        var selectedValue = this.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    });
+    </script>
+</head>
+<body>
+      <header>
+        <div class="header-1">
+            <a href="#" class="logo"><i class="fas fa-shopping-basket"></i>Veg Easy</a>
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box" placeholder="    Search here..">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+        </div>
+        <div class="header-2">
+            <div id="menu-bar" class="fas fa-bars"></div>
+            <nav class="navbar">
+                <a href="/">home</a>
+             <select id="nname" onchange="navigateToPage()">
+    <option value="">Select Category</option>
+    <option value="/fruit">Fruits</option>
+    <option value="/veg">Vegetables</option>
+</select>
+
+               
+                <a href="/about">About Us</a>
+                <a href="/login">Register/Login</a>
+            </nav>
+            <div class="icons">
+                <a href="/cart" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="/profile" class="fas fa-user-circle"></a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <table id="cartTable">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                      
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Product 1</td>
+                        <td>2</td>
+                        <td>$10.00</td>
+                        <td>$20.00</td>
+                        <td class="product-actions">
+                            <button onclick="removeItem(this)">Remove</button>
+                            <button onclick="saveForLater(this)">Save for Later</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Product 2</td>
+                        <td>1</td>
+                        <td>$15.00</td>
+                        <td>$15.00</td>
+                        <td class="product-actions">
+                            <button onclick="removeItem(this)">Remove</button>
+                            <button onclick="saveForLater(this)">Save for Later</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="total">
+                <p id="totalAmount">Total: $35.00</p>
+            </div>
+            <div class="actions">
+                <button onclick="updateCart()">Update Cart</button>
+                <button onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    function navigateToPage() {
+        var selectElement = document.getElementById('nname');
+        var selectedValue = selectElement.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>
+
+</body>
+</html>

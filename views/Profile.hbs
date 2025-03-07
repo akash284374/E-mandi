@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - E-Mandi</title>
+    <link rel="stylesheet" href="/static/css/profile.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="header-1">
+            <a href="logo.jpg" class="logo"><i class="fas fa-shopping-basket"></i>Veg Easy</a>
+            <form action="" class="search-box-container">
+                <input type="search" id="search-box" placeholder="    Search here..">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+        </div>
+        <div class="header-2">
+            <div id="menu-bar" class="fas fa-bars"></div>
+            <nav class="navbar">
+                <a href="/">home</a>
+                <select id="nname" onchange="navigateToPage()">
+    <option value="">Select Category</option>
+    <option value="/fruit">Fruits</option>
+    <option value="/veg">Vegetables</option>
+</select>
+
+                <a href="/about">About Us</a>
+                <a href="/login">Register/Login</a>
+            </nav>
+            <div class="icons">
+                <a href="/cart" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="/profile" class="fas fa-user-circle"></a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile">
+            <img src="/static/images/example.jpeg" alt="Profile Picture">
+            <h2>John Doe</h2>
+            <p>Farmer</p>
+            <div class="info">
+                <div>
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> +123 456 7890</p>
+                </div>
+                <div>
+                    <h3>Address</h3>
+                    <p>123 E-Mandi Street</p>
+                    <p>City, Country</p>
+                </div>
+            </div>
+            <div class="actions">
+                <a href="edit_profile.html">Edit Profile</a>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    function navigateToPage() {
+        var selectElement = document.getElementById('nname');
+        var selectedValue = selectElement.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>
+
+</body>
+</html>
